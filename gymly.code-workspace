@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "backend",
+            "name": "Backend (FastAPI)"
+        },
+        {
+            "path": "frontend",
+            "name": "Frontend (Flutter)"
+        }
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/.DS_Store": true
+        }
+    }
+}

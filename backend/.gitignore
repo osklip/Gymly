@@ -1,0 +1,13 @@
+# Srodowisko wirtualne
+venv/
+env/
+
+# Zmienne srodowiskowe
+.env
+
+# Klucze autoryzacyjne (KRYTYCZNE)
+firebase_credentials.json
+
+# Pliki tymczasowe Pythona
+__pycache__/
+*.pyc
