@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart'; // Plik wygenerowany wcześniej przez FlutterFire CLI
-import 'screens/login_screen.dart';
+import 'auth_wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,17 +12,17 @@ void main() async {
 }
 
 class GymApp extends StatelessWidget {
-  const GymApp({Key? key}) : super(key: key);
+  const GymApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GymApp',
+      title: 'Gymly',
       theme: ThemeData(
         brightness: Brightness.dark,
         fontFamily: 'monospace',
       ),
-      home: const LoginScreen(),
+      home: const AuthWrapper(),
     );
   }
 }

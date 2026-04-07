@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -71,8 +70,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
       // 4. Analiza odpowiedzi z serwera
       if (response.statusCode == 200) {
-        final Map<String, dynamic> responseData = jsonDecode(response.body);
-        _navigateToSuccessScreen(responseData['wiadomosc'] ?? "Witaj!");
+        //final Map<String, dynamic> responseData = jsonDecode(response.body);
+        //_navigateToSuccessScreen(responseData['wiadomosc'] ?? "Witaj!");
       } else if (response.statusCode == 404) {
         _showErrorSnackBar("Konto zweryfikowane, brak rekordu w bazie danych.");
         // Tutaj powinna nastąpić nawigacja do ekranu dokończenia rejestracji
@@ -108,23 +107,6 @@ class _LoginScreenState extends State<LoginScreen> {
       SnackBar(
         content: Text(message, style: const TextStyle(fontFamily: 'monospace')),
         backgroundColor: Colors.red[800],
-      ),
-    );
-  }
-
-  void _navigateToSuccessScreen(String welcomeMessage) {
-    if (!mounted) return;
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => Scaffold(
-          backgroundColor: _backgroundColor,
-          body: Center(
-            child: Text(
-              welcomeMessage,
-              style: TextStyle(color: _textColor, fontSize: 24, fontFamily: 'monospace'),
-            ),
-          ),
-        ),
       ),
     );
   }

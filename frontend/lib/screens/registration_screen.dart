@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({Key? key}) : super(key: key);
+  const RegistrationScreen({super.key});
 
   @override
   State<RegistrationScreen> createState() => _RegistrationScreenState();
@@ -82,7 +82,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
       // 4. Analiza odpowiedzi serwera i wdrożenie mechanizmu kompensacyjnego
       if (response.statusCode == 201) {
-        _navigateToSuccessScreen("Konto utworzone. Witaj, $username!");
+        //_navigateToSuccessScreen("Konto utworzone. Witaj, $username!");
       } else {
         // Scenariusz krytyczny: PostgreSQL odrzucił rejestrację (np. zajęta nazwa użytkownika).
         // Należy wycofać rejestrację z Firebase, aby uniknąć kont osieroconych.
@@ -123,25 +123,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         content: Text(message, style: const TextStyle(fontFamily: 'monospace')),
         backgroundColor: Colors.red[800],
       ),
-    );
-  }
-
-  void _navigateToSuccessScreen(String welcomeMessage) {
-    if (!mounted) return;
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(
-        builder: (context) => Scaffold(
-          backgroundColor: _backgroundColor,
-          body: Center(
-            child: Text(
-              welcomeMessage,
-              style: TextStyle(color: _textColor, fontSize: 24, fontFamily: 'monospace'),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      ),
-      (Route<dynamic> route) => false, // Usuwa całą historię nawigacji
     );
   }
 
